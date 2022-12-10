@@ -1,0 +1,24 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres:15.1-alpine
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  api:
+    image: hasura/graphql-engine:v2.1.0
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://${PG_USER}:${PG_PASS}@postgres:5432/${PG_DB}
+      HASURA_GRAPHQL_ENABLE_CONSOLE: 'true' # set to "false" to disable console
+      ## uncomment next line to set an admin secret
+      # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+volumes:
+  db_data:
+    external: true
+    name: atelier-amelie-nx-trpc_atelier-amelie-db-data
