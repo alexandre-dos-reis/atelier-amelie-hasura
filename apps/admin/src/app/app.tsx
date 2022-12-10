@@ -1,13 +1,16 @@
 import { Admin, ListGuesser, Resource } from 'react-admin';
 import { useHasuraDataProvider } from '../utils/useDataProvider';
+import polyglotI18nProvider from 'ra-i18n-polyglot';
+import frenchMessages from 'ra-language-french';
 
 export function App() {
   const { dataProvider } = useHasuraDataProvider();
+  const i18nProvider = polyglotI18nProvider(() => frenchMessages, 'fr');
 
   if (!dataProvider) return <p>Loading...</p>;
 
   return (
-    <Admin dataProvider={dataProvider}>
+    <Admin dataProvider={dataProvider} i18nProvider={i18nProvider}>
       <Resource name="Artwork" list={ListGuesser} />
       <Resource name="Category" list={ListGuesser} />
       <Resource name="Product" list={ListGuesser} />
@@ -23,3 +26,4 @@ export function App() {
 }
 
 export default App;
+

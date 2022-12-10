@@ -7,7 +7,6 @@
     "start:all": "nx run-many --target=serve --projects=admin",
     "build": "nx build",
     "test": "nx test",
-
     "hasura": "pnpm exec hasura"
   },
   "private": true,
@@ -54,6 +53,8 @@
     "core-js": "^3.6.5",
     "graphql": "^16.6.0",
     "ra-data-hasura": "^0.5.4",
+    "ra-i18n-polyglot": "^4.6.1",
+    "ra-language-french": "^4.6.1",
     "react": "18.2.0",
     "react-admin": "^4.6.1",
     "react-dom": "18.2.0",
