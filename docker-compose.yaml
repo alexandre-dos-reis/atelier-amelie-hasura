@@ -5,14 +5,20 @@ services:
     restart: always
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - atelier-amelie
 
   api:
-    image: hasura/graphql-engine:v2.1.0
+    image: hasura/graphql-engine:v2.1.0.cli-migrations-v3
     ports:
       - 8080:8080
     depends_on:
       - postgres
     restart: always
+    networks:
+      - atelier-amelie
+    volumes:
+    - ./hasura-metadata:/hasura-metadata
     environment:
       HASURA_GRAPHQL_DATABASE_URL: postgres://${PG_USER}:${PG_PASS}@postgres:5432/${PG_DB}
       HASURA_GRAPHQL_ENABLE_CONSOLE: 'true' # set to "false" to disable console
@@ -22,3 +28,6 @@ volumes:
   db_data:
     external: true
     name: atelier-amelie-nx-trpc_atelier-amelie-db-data
+
+networks:
+  atelier-amelie:

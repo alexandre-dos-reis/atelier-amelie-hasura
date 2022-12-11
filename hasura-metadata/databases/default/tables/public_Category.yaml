@@ -1,0 +1,11 @@
+table:
+  schema: public
+  name: Category
+array_relationships:
+  - name: _ArtworkToCategories
+    using:
+      foreign_key_constraint_on:
+        column: B
+        table:
+          schema: public
+          name: _ArtworkToCategory

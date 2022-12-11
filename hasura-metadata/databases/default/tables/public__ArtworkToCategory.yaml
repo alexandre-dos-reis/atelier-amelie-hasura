@@ -1,0 +1,10 @@
+table:
+  schema: public
+  name: _ArtworkToCategory
+object_relationships:
+  - name: Artwork
+    using:
+      foreign_key_constraint_on: A
+  - name: Category
+    using:
+      foreign_key_constraint_on: B

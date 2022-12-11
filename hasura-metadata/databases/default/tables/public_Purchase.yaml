@@ -1,0 +1,18 @@
+table:
+  schema: public
+  name: Purchase
+array_relationships:
+  - name: Addresses
+    using:
+      foreign_key_constraint_on:
+        column: purchaseId
+        table:
+          schema: public
+          name: Address
+  - name: PurchaseItems
+    using:
+      foreign_key_constraint_on:
+        column: purchaseId
+        table:
+          schema: public
+          name: PurchaseItem

@@ -1,0 +1,18 @@
+table:
+  schema: public
+  name: Artwork
+array_relationships:
+  - name: Products
+    using:
+      foreign_key_constraint_on:
+        column: artworkId
+        table:
+          schema: public
+          name: Product
+  - name: _ArtworkToCategories
+    using:
+      foreign_key_constraint_on:
+        column: A
+        table:
+          schema: public
+          name: _ArtworkToCategory

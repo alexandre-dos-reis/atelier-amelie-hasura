@@ -1,0 +1,7 @@
+table:
+  schema: public
+  name: Address
+object_relationships:
+  - name: Purchase
+    using:
+      foreign_key_constraint_on: purchaseId

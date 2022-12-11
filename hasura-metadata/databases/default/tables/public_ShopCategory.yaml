@@ -1,0 +1,22 @@
+table:
+  schema: public
+  name: ShopCategory
+object_relationships:
+  - name: ShopCategory
+    using:
+      foreign_key_constraint_on: parentCategoryId
+array_relationships:
+  - name: Products
+    using:
+      foreign_key_constraint_on:
+        column: shopCategoryId
+        table:
+          schema: public
+          name: Product
+  - name: ShopCategories
+    using:
+      foreign_key_constraint_on:
+        column: parentCategoryId
+        table:
+          schema: public
+          name: ShopCategory
