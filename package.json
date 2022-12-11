@@ -5,12 +5,15 @@
   "scripts": {
     "start": "nx serve",
     "start:all": "nx run-many --target=serve --projects=admin",
+    
     "build": "nx build",
     "test": "nx test",
-    "hasura": "pnpm exec hasura",
-    "hasura:export": "rm -Rf ./hasura-metadata && pnpm exec hasura metadata export",
-    "hasura:import": "pnpm exec hasura metadata apply",
-    "hasura:reload": "pnpm exec hasura metadata reload",
+
+    "hasura": "pnpm exec hasura --project ./hasura",
+    "hasura:export": "rm -rf ./hasura/metadata && pnpm hasura metadata export",
+    "hasura:import": "pnpm hasura metadata apply",
+    "hasura:reload": "pnpm hasura metadata reload",
+
     "orm:generate:entities": "pnpm exec mikro-orm generate-entities --save --path=./database/my-entities"
   },
   "private": true,
@@ -27,7 +30,7 @@
     "@svgr/webpack": "^6.1.2",
     "@testing-library/react": "13.4.0",
     "@types/jest": "28.1.1",
-    "@types/node": "16.11.7",
+    "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
